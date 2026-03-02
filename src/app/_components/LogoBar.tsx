@@ -38,7 +38,7 @@ export function LogoBar() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {integrations.map((item) => (
-            <div key={item.name} className={`flex items-center gap-2.5${item.comingSoon ? ' opacity-40' : ''}`}>
+            <div key={item.name} className={`flex items-center gap-3${item.comingSoon ? ' opacity-40' : ''}`}>
               {item.type === 'img' ? (
                 <Image
                   src={item.src}
