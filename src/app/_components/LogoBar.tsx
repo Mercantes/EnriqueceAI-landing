@@ -38,14 +38,14 @@ export function LogoBar() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {integrations.map((item) => (
-            <div key={item.name} className={`flex items-center gap-3${item.comingSoon ? ' opacity-40' : ''}`}>
+            <div key={item.name} className={`flex items-center gap-2${item.comingSoon ? ' opacity-40' : ''}`}>
               {item.type === 'img' ? (
                 <Image
                   src={item.src}
                   alt={item.name}
-                  width={28}
-                  height={28}
-                  className={`h-7 w-7 shrink-0 rounded object-contain${item.comingSoon ? ' grayscale' : ''}`}
+                  width={24}
+                  height={24}
+                  className={`h-6 w-6 shrink-0 rounded object-contain${item.comingSoon ? ' grayscale' : ''}`}
                 />
               ) : (
                 <svg
