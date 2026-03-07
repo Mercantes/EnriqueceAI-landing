@@ -30,40 +30,62 @@ const integrations: Integration[] = [
   { name: 'Apollo.io', type: 'img', src: '/logos/apollo-icon.png' },
 ];
 
+function LogoItem({ item }: { item: Integration }) {
+  return (
+    <div className={`flex shrink-0 items-center gap-3 px-6${item.comingSoon ? ' opacity-40' : ''}`}>
+      {item.type === 'img' ? (
+        <Image
+          src={item.src}
+          alt={item.name}
+          width={32}
+          height={32}
+          className={`h-8 w-8 shrink-0 rounded object-contain${item.comingSoon ? ' grayscale' : ''}`}
+        />
+      ) : (
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-8 w-8 shrink-0"
+          fill={item.comingSoon ? '#9CA3AF' : item.color}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d={item.path} />
+        </svg>
+      )}
+      <span className="whitespace-nowrap text-base font-medium text-[var(--muted-foreground)]">
+        {item.name}
+        {item.comingSoon && <span className="ml-1.5 text-xs opacity-70">em breve</span>}
+      </span>
+    </div>
+  );
+}
+
 export function LogoBar() {
   return (
-    <section className="border-y border-[var(--border)]/40 bg-[var(--muted)]/30 py-10">
+    <section className="border-y border-[var(--border)]/40 bg-[var(--muted)]/30 py-14">
       <div className="mx-auto max-w-6xl px-6 text-center">
-        <p className="mb-6 text-sm font-medium text-[var(--muted-foreground)]">
+        <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+          Conecte com seu stack de vendas
+        </h2>
+        <p className="mt-2 text-sm text-[var(--muted-foreground)]">
           Integra com as ferramentas que você já usa
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      </div>
+
+      <div className="relative mt-10 overflow-hidden">
+        {/* Fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--muted)]/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--muted)]/50 to-transparent" />
+
+        {/* Marquee track */}
+        <div className="flex w-max animate-marquee items-center">
+          {/* First set */}
           {integrations.map((item) => (
-            <div key={item.name} className={`flex items-center gap-2${item.comingSoon ? ' opacity-40' : ''}`}>
-              {item.type === 'img' ? (
-                <Image
-                  src={item.src}
-                  alt={item.name}
-                  width={24}
-                  height={24}
-                  className={`h-6 w-6 shrink-0 rounded object-contain${item.comingSoon ? ' grayscale' : ''}`}
-                />
-              ) : (
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 shrink-0"
-                  fill={item.comingSoon ? '#9CA3AF' : item.color}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d={item.path} />
-                </svg>
-              )}
-              <span className="text-sm font-medium text-[var(--muted-foreground)]">
-                {item.name}
-                {item.comingSoon && <span className="ml-1.5 text-xs opacity-70">em breve</span>}
-              </span>
-            </div>
+            <LogoItem key={item.name} item={item} />
+          ))}
+          {/* Duplicate for seamless loop */}
+          {integrations.map((item) => (
+            <LogoItem key={`dup-${item.name}`} item={item} />
           ))}
         </div>
       </div>
