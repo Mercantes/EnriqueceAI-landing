@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 
@@ -82,7 +83,7 @@ function ChevronIcon() {
 }
 
 export function HeroWithForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -98,7 +99,7 @@ export function HeroWithForm() {
 
     setLoading(false);
     if (result.success) {
-      setSubmitted(true);
+      router.push('/obrigado');
     } else {
       setError(result.error);
     }
@@ -142,15 +143,6 @@ export function HeroWithForm() {
         </div>
 
         <div className="flex items-center justify-center">
-          {submitted ? (
-            <div className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--card)] p-10 text-center shadow-lg">
-              <CheckCircle2 aria-hidden="true" className="mx-auto mb-4 h-12 w-12 text-green-500" />
-              <h2 className="text-2xl font-bold">Obrigado pelo interesse!</h2>
-              <p className="mt-3 text-[var(--muted-foreground)]">
-                Recebemos seus dados e entraremos em contato em breve.
-              </p>
-            </div>
-          ) : (
             <div className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-lg">
               <h2 className="mb-1 text-xl font-bold">Fale com um consultor</h2>
               <p className="mb-6 text-sm text-[var(--muted-foreground)]">
@@ -286,7 +278,6 @@ export function HeroWithForm() {
                 </Button>
               </form>
             </div>
-          )}
         </div>
       </div>
     </section>
