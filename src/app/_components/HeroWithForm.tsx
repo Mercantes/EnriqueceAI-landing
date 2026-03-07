@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Clock, Loader2, ShieldCheck } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
@@ -121,7 +121,7 @@ export function HeroWithForm() {
               width={48}
               height={48}
               className="rounded-full"
-              unoptimized
+              priority
             />
             <span className="text-xl font-bold">Enriquece AI</span>
           </div>
@@ -145,9 +145,16 @@ export function HeroWithForm() {
               </li>
             ))}
           </ul>
+
+          <div className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[var(--primary)]/10 px-4 py-2.5">
+            <Clock aria-hidden="true" className="h-5 w-5 text-[var(--primary)]" />
+            <span className="text-sm font-semibold">
+              Retornamos em até <strong className="text-[var(--primary)]">10 minutos</strong>
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-start justify-center pt-8">
             <div className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-lg">
               <h2 className="mb-1 text-xl font-bold">Fale com um consultor</h2>
               <p className="mb-6 text-sm text-[var(--muted-foreground)]">
@@ -278,9 +285,14 @@ export function HeroWithForm() {
                       Enviando...
                     </>
                   ) : (
-                    'Enviar'
+                    'Solicitar demonstração'
                   )}
                 </Button>
+
+                <p className="flex items-center justify-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+                  <ShieldCheck aria-hidden="true" className="h-3.5 w-3.5" />
+                  Seus dados estão protegidos
+                </p>
               </form>
             </div>
         </div>

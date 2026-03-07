@@ -5,6 +5,7 @@ import { LogoBar } from './_components/LogoBar';
 import { MetricsSection } from './_components/MetricsSection';
 import { SalesEngagementSection } from './_components/SalesEngagementSection';
 import { SmoothScroll } from './_components/SmoothScroll';
+import { WhatsAppFab } from './_components/WhatsAppFab';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <MetricsSection />
       <FeaturesSection />
       <LandingFooter />
+      <WhatsAppFab />
     </main>
   );
 }
