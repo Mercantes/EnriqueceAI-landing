@@ -54,7 +54,7 @@ const benefits = [
 ];
 
 const inputClasses =
-  'w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted-foreground)]/60 focus:ring-2 focus:ring-[var(--primary)]/30 focus:border-[var(--primary)]';
+  'w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted-foreground)] focus:ring-2 focus:ring-[var(--primary)]/30 focus:border-[var(--primary)]';
 
 const selectClasses =
   'w-full appearance-none rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] outline-none focus:ring-2 focus:ring-[var(--primary)]/30 focus:border-[var(--primary)]';
@@ -66,6 +66,7 @@ function RequiredMark() {
 function ChevronIcon() {
   return (
     <svg
+      aria-hidden="true"
       className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-[var(--muted-foreground)]"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -133,7 +134,7 @@ export function HeroWithForm() {
           <ul className="mt-8 space-y-3">
             {benefits.map((benefit) => (
               <li key={benefit} className="flex items-center gap-3 text-sm">
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-green-500" />
+                <CheckCircle2 aria-hidden="true" className="h-5 w-5 shrink-0 text-green-500" />
                 <span>{benefit}</span>
               </li>
             ))}
@@ -143,7 +144,7 @@ export function HeroWithForm() {
         <div className="flex items-center justify-center">
           {submitted ? (
             <div className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--card)] p-10 text-center shadow-lg">
-              <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-green-500" />
+              <CheckCircle2 aria-hidden="true" className="mx-auto mb-4 h-12 w-12 text-green-500" />
               <h2 className="text-2xl font-bold">Obrigado pelo interesse!</h2>
               <p className="mt-3 text-[var(--muted-foreground)]">
                 Recebemos seus dados e entraremos em contato em breve.
@@ -158,39 +159,40 @@ export function HeroWithForm() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="mb-1 block text-xs font-medium">
+                  <label htmlFor="field-name" className="mb-1 block text-xs font-medium">
                     Nome <RequiredMark />
                   </label>
-                  <input type="text" name="name" required className={inputClasses} />
+                  <input id="field-name" type="text" name="name" required className={inputClasses} />
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium">
+                  <label htmlFor="field-company" className="mb-1 block text-xs font-medium">
                     Empresa <RequiredMark />
                   </label>
-                  <input type="text" name="company" required className={inputClasses} />
+                  <input id="field-company" type="text" name="company" required className={inputClasses} />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-email" className="mb-1 block text-xs font-medium">
                       Email de trabalho <RequiredMark />
                     </label>
-                    <input type="email" name="email" required className={inputClasses} />
+                    <input id="field-email" type="email" name="email" required className={inputClasses} />
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-phone" className="mb-1 block text-xs font-medium">
                       Telefone <RequiredMark />
                     </label>
-                    <input type="tel" name="phone" required className={inputClasses} />
+                    <input id="field-phone" type="tel" name="phone" required className={inputClasses} />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium">
+                  <label htmlFor="field-website" className="mb-1 block text-xs font-medium">
                     Site da empresa <RequiredMark />
                   </label>
                   <input
+                    id="field-website"
                     type="url"
                     name="website"
                     required
@@ -201,11 +203,11 @@ export function HeroWithForm() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-employees" className="mb-1 block text-xs font-medium">
                       Funcionários <RequiredMark />
                     </label>
                     <div className="relative">
-                      <select name="employees" required className={selectClasses} defaultValue="">
+                      <select id="field-employees" name="employees" required className={selectClasses} defaultValue="">
                         <option value="" disabled>Selecione</option>
                         {employeeOptions.map((opt) => (
                           <option key={opt} value={opt}>{opt}</option>
@@ -215,11 +217,11 @@ export function HeroWithForm() {
                     </div>
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-role" className="mb-1 block text-xs font-medium">
                       Cargo <RequiredMark />
                     </label>
                     <div className="relative">
-                      <select name="role" required className={selectClasses} defaultValue="">
+                      <select id="field-role" name="role" required className={selectClasses} defaultValue="">
                         <option value="" disabled>Selecione</option>
                         {roleOptions.map((opt) => (
                           <option key={opt} value={opt}>{opt}</option>
@@ -232,11 +234,11 @@ export function HeroWithForm() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-sdr-count" className="mb-1 block text-xs font-medium">
                       SDRs/BDRs <RequiredMark />
                     </label>
                     <div className="relative">
-                      <select name="sdr_count" required className={selectClasses} defaultValue="">
+                      <select id="field-sdr-count" name="sdr_count" required className={selectClasses} defaultValue="">
                         <option value="" disabled>Selecione</option>
                         {sdrOptions.map((opt) => (
                           <option key={opt} value={opt}>{opt}</option>
@@ -246,11 +248,11 @@ export function HeroWithForm() {
                     </div>
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium">
+                    <label htmlFor="field-crm" className="mb-1 block text-xs font-medium">
                       CRM atual <RequiredMark />
                     </label>
                     <div className="relative">
-                      <select name="crm" required className={selectClasses} defaultValue="">
+                      <select id="field-crm" name="crm" required className={selectClasses} defaultValue="">
                         <option value="" disabled>Selecione</option>
                         {crmOptions.map((opt) => (
                           <option key={opt} value={opt}>{opt}</option>

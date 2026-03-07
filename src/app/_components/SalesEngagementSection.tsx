@@ -38,7 +38,7 @@ export function SalesEngagementSection() {
                   <div className="flex items-center gap-1.5">
                     {step.icons.map((Icon, j) => (
                       <div key={j} className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] shadow-sm">
-                        <Icon className="h-4 w-4 text-[var(--muted-foreground)]" />
+                        <Icon aria-hidden="true" className="h-4 w-4 text-[var(--muted-foreground)]" />
                       </div>
                     ))}
                   </div>
@@ -90,7 +90,7 @@ export function SalesEngagementSection() {
                 >
                   {layer.label}
                 </div>
-                <p className="text-center text-xs leading-snug text-[var(--muted-foreground)]/70">
+                <p className="text-center text-xs leading-snug text-[var(--muted-foreground)]">
                   {layer.description}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export function SalesEngagementSection() {
                 <div className="h-2 w-0.5 rounded bg-[var(--border)]" />
                 <div className="h-2 w-0.5 rounded bg-[var(--border)]" />
               </div>
-              <svg width="16" height="10" viewBox="0 0 16 10" className="text-[var(--border)]">
+              <svg aria-hidden="true" width="16" height="10" viewBox="0 0 16 10" className="text-[var(--border)]">
                 <polygon points="0,0 8,10 16,0" fill="currentColor" />
               </svg>
               <span className="mt-1 text-sm font-semibold text-[var(--muted-foreground)]">Vendas</span>

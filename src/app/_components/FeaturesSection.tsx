@@ -33,7 +33,7 @@ export function FeaturesSection() {
               className={`animate-fade-in-up ${delayClasses[i]} group rounded-xl border border-border/60 bg-card p-6 transition-shadow hover:shadow-md`}
             >
               <div className="mb-4 flex size-11 items-center justify-center rounded-lg bg-primary/10">
-                <feature.icon className="size-5 text-primary" />
+                <feature.icon aria-hidden="true" className="size-5 text-primary" />
               </div>
               <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
