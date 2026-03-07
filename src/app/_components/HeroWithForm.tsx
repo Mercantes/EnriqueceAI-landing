@@ -113,7 +113,7 @@ export function HeroWithForm() {
   return (
     <section id="cadastro" className="min-h-screen bg-[var(--background)]">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-start pt-8">
           <div className="mb-8 flex items-center gap-3">
             <Image
               src="/logos/logo-ea-red.png"
