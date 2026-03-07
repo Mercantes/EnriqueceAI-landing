@@ -99,7 +99,12 @@ export function HeroWithForm() {
 
     setLoading(false);
     if (result.success) {
-      router.push('/obrigado');
+      const params = new URLSearchParams({
+        name: String(payload.name || ''),
+        sdrs: String(payload.sdr_count || ''),
+        crm: String(payload.crm || ''),
+      });
+      router.push(`/obrigado?${params.toString()}`);
     } else {
       setError(result.error);
     }
