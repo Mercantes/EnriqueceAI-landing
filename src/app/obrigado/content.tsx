@@ -26,8 +26,8 @@ const crmMessages: Record<string, string> = {
   'Não utilizo CRM':
     'Sem CRM? Sem problema. O Enriquece AI funciona standalone e integra quando você precisar.',
   HubSpot: 'Já integramos com HubSpot — seus leads vão sincronizar automaticamente.',
-  Pipedrive: 'A integração com Pipedrive está a caminho — seus leads vão sincronizar em breve.',
-  'RD Station CRM': 'A integração com RD Station está a caminho — seus leads vão sincronizar em breve.',
+  Pipedrive: 'Já integramos com Pipedrive — seus leads e negócios vão sincronizar automaticamente.',
+  'RD Station CRM': 'Já integramos com RD Station CRM — seus leads e oportunidades vão sincronizar automaticamente.',
   Salesforce: 'Integração com Salesforce no roadmap — vamos conversar sobre como conectar.',
   Zoho: 'Integração com Zoho no roadmap — vamos conversar sobre como conectar.',
   Outro: 'Vamos entender qual CRM você usa para planejar a melhor integração.',
