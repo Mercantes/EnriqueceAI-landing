@@ -27,7 +27,7 @@ const integrations: Integration[] = [
   },
   { name: 'Google', type: 'img', src: '/logos/google-logo.png' },
   { name: 'Apollo.io', type: 'img', src: '/logos/apollo-icon.png' },
-  { name: 'Kommo', type: 'img', src: '/logos/kommo-icon.png', bgColor: '#5e42d0' },
+  { name: 'KommoCRM', type: 'img', src: '/logos/kommo-icon.png', bgColor: '#5e42d0' },
 ];
 
 function LogoItem({ item }: { item: Integration }) {
