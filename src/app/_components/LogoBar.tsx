@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 type SvgIntegration = { name: string; type: 'svg'; color: string; path: string; comingSoon?: boolean };
-type ImgIntegration = { name: string; type: 'img'; src: string; comingSoon?: boolean };
+type ImgIntegration = { name: string; type: 'img'; src: string; bgColor?: string; comingSoon?: boolean };
 type Integration = SvgIntegration | ImgIntegration;
 
 const integrations: Integration[] = [
@@ -27,19 +27,25 @@ const integrations: Integration[] = [
   },
   { name: 'Google', type: 'img', src: '/logos/google-logo.png' },
   { name: 'Apollo.io', type: 'img', src: '/logos/apollo-icon.png' },
+  { name: 'Kommo', type: 'img', src: '/logos/kommo-icon.png', bgColor: '#5e42d0' },
 ];
 
 function LogoItem({ item }: { item: Integration }) {
   return (
     <div className={`flex shrink-0 items-center gap-3 px-6${item.comingSoon ? ' opacity-40' : ''}`}>
       {item.type === 'img' ? (
-        <Image
-          src={item.src}
-          alt={item.name}
-          width={32}
-          height={32}
-          className={`h-8 w-8 shrink-0 rounded object-contain${item.comingSoon ? ' grayscale' : ''}`}
-        />
+        <div
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded${item.comingSoon ? ' grayscale' : ''}`}
+          style={item.bgColor ? { backgroundColor: item.bgColor } : undefined}
+        >
+          <Image
+            src={item.src}
+            alt={item.name}
+            width={32}
+            height={32}
+            className={`${item.bgColor ? 'h-5 w-5' : 'h-8 w-8'} shrink-0 object-contain`}
+          />
+        </div>
       ) : (
         <svg
           aria-hidden="true"
