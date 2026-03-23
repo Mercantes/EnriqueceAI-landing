@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, type FormEvent } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2, Clock, Loader2, ShieldCheck } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -84,8 +85,27 @@ function ChevronIcon() {
 
 export function HeroWithForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [utmParams, setUtmParams] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
+  });
+
+  useEffect(() => {
+    setUtmParams({
+      utm_source: searchParams.get('utm_source') ?? '',
+      utm_medium: searchParams.get('utm_medium') ?? '',
+      utm_campaign: searchParams.get('utm_campaign') ?? '',
+      utm_term: searchParams.get('utm_term') ?? '',
+      utm_content: searchParams.get('utm_content') ?? '',
+    });
+  }, [searchParams]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -154,7 +174,7 @@ export function HeroWithForm() {
           </div>
         </div>
 
-        <div className="flex items-start justify-center pt-8">
+        <div id="hero-form" className="flex items-start justify-center pt-8">
             <div className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-lg">
               <h2 className="mb-1 text-xl font-bold">Fale com um consultor</h2>
               <p className="mb-6 text-sm text-[var(--muted-foreground)]">
@@ -267,6 +287,12 @@ export function HeroWithForm() {
                   </div>
                 </div>
 
+                <input type="hidden" name="utm_source" value={utmParams.utm_source} />
+                <input type="hidden" name="utm_medium" value={utmParams.utm_medium} />
+                <input type="hidden" name="utm_campaign" value={utmParams.utm_campaign} />
+                <input type="hidden" name="utm_term" value={utmParams.utm_term} />
+                <input type="hidden" name="utm_content" value={utmParams.utm_content} />
+
                 {error && (
                   <p className="rounded-lg bg-red-500/10 px-4 py-2 text-center text-sm font-medium text-red-500">
                     {error}
@@ -289,10 +315,13 @@ export function HeroWithForm() {
                   )}
                 </Button>
 
-                <p className="flex items-center justify-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+                <Link
+                  href="/privacidade"
+                  className="flex items-center justify-center gap-1.5 text-xs text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+                >
                   <ShieldCheck aria-hidden="true" className="h-3.5 w-3.5" />
                   Seus dados estão protegidos
-                </p>
+                </Link>
               </form>
             </div>
         </div>

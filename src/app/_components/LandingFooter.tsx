@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Linkedin, MessageSquare } from 'lucide-react';
 
 export function LandingFooter() {
@@ -37,9 +38,17 @@ export function LandingFooter() {
           </a>
         </div>
 
-        <p className="text-xs text-[var(--muted-foreground)]">
-          &copy; 2026 Enriquece AI. Todos os direitos reservados.
-        </p>
+        <div className="flex flex-col items-center gap-2 sm:items-end">
+          <Link
+            href="/privacidade"
+            className="text-xs text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            Política de Privacidade
+          </Link>
+          <p className="text-xs text-[var(--muted-foreground)]">
+            &copy; 2026 Enriquece AI. Todos os direitos reservados.
+          </p>
+        </div>
       </div>
     </footer>
   );
