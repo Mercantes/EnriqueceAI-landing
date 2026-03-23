@@ -16,9 +16,17 @@ export async function submitLandingLead(
 
   const supabase = createServiceRoleClient();
 
+  // Strip empty UTM fields to avoid errors if columns don't exist yet
+  const { utm_source, utm_medium, utm_campaign, utm_term, utm_content, ...coreData } = parsed.data;
+  const utmFields = Object.fromEntries(
+    Object.entries({ utm_source, utm_medium, utm_campaign, utm_term, utm_content })
+      .filter(([, v]) => v && v.length > 0),
+  );
+  const insertData = { ...coreData, ...utmFields };
+
   const { data, error } = await (supabase
     .from('landing_leads' as never) as ReturnType<typeof supabase.from>)
-    .insert(parsed.data as never)
+    .insert(insertData as never)
     .select('id')
     .single();
 
