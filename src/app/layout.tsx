@@ -51,6 +51,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'Enriquece AI',
+                url: 'https://www.enriqueceai.com.br',
+                logo: 'https://www.enriqueceai.com.br/logos/logo-ea-red.png',
+                sameAs: ['https://www.linkedin.com/company/enriqueceai'],
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'SoftwareApplication',
+                name: 'Enriquece AI',
+                applicationCategory: 'BusinessApplication',
+                operatingSystem: 'Web',
+                description:
+                  'Sales Engagement para times B2B — cadências inteligentes, enriquecimento automático e IA generativa',
+                url: 'https://www.enriqueceai.com.br',
+              },
+            ]),
+          }}
+        />
       </head>
       <body className="font-sans antialiased">
         <noscript>

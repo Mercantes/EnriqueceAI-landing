@@ -45,6 +45,7 @@ const crmOptions = [
   'RD Station CRM',
   'Salesforce',
   'Zoho',
+  'Kommo',
   'Outro',
   'Não utilizo CRM',
 ];
