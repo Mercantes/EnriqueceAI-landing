@@ -82,10 +82,10 @@ export function LogoBar() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--muted)]/50 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--muted)]/50 to-transparent" />
 
-        {/* Marquee track — two identical sets side by side */}
-        <div className="flex animate-marquee items-center">
+        {/* Marquee track — two identical sets, each min-w-full for seamless loop */}
+        <div className="marquee-track flex items-center">
           {[0, 1].map((set) => (
-            <div key={set} className="flex shrink-0 items-center">
+            <div key={set} className="marquee-set flex shrink-0 items-center" aria-hidden={set === 1 || undefined}>
               {integrations.map((item) => (
                 <LogoItem key={`${set}-${item.name}`} item={item} />
               ))}

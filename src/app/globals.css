@@ -88,8 +88,15 @@
 .animate-delay-200 { animation-delay: 200ms; }
 .animate-delay-300 { animation-delay: 300ms; }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* Marquee: each .marquee-set must fill at least the viewport so the
+   -100% translation (= one full set width) creates a seamless loop. */
+.marquee-set { min-width: 100vw; justify-content: space-around; }
+.marquee-track {
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
 }
-.animate-marquee { animation: marquee 25s linear infinite; }
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
