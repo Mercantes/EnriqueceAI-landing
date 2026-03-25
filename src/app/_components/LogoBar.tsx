@@ -28,6 +28,8 @@ const integrations: Integration[] = [
   { name: 'Google', type: 'img', src: '/logos/google-logo.png' },
   { name: 'Apollo.io', type: 'img', src: '/logos/apollo-icon.png' },
   { name: 'KommoCRM', type: 'img', src: '/logos/kommo-icon.png', bgColor: '#5e42d0' },
+  { name: 'API4COM', type: 'img', src: '/logos/api4com-icon.png' },
+  { name: '3CPlus', type: 'img', src: '/logos/3cplus-logo.svg' },
 ];
 
 function LogoItem({ item }: { item: Integration }) {
