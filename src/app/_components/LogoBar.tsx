@@ -72,7 +72,7 @@ export function LogoBar() {
     <section className="border-y border-[var(--border)]/40 bg-[var(--muted)]/30 py-14">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
-          Conecte com seu stack de vendas
+          Conecte com sua stack de vendas
         </h2>
         <p className="mt-2 text-sm text-[var(--muted-foreground)]">
           Integra com as ferramentas que você já usa
